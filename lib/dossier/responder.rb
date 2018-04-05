@@ -38,7 +38,7 @@ module Dossier
     end
 
     def set_content_type!(type)
-      controller.headers["Content-Type"] = type
+      controller.headers["Content-Type"] = %[#{type}; charset=utf-8]
     end
     
     def collection_and_headers(collection)
