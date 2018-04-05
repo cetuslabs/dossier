@@ -10,16 +10,19 @@ module Dossier
     end
 
     def to_json
+      set_content_type!('text/json')
       controller.render json: report.results.hashes
     end
 
     def to_csv
       set_content_disposition!
+      set_content_type!('text/csv')
       controller.response_body = StreamCSV.new(*collection_and_headers(report.raw_results.arrays))
     end
 
     def to_xls
       set_content_disposition!
+      set_content_type!('application/xls')
       controller.response_body = Xls.new(*collection_and_headers(report.raw_results.arrays))
     end
 
@@ -32,6 +35,10 @@ module Dossier
 
     def set_content_disposition!
       controller.headers["Content-Disposition"] = %[attachment;filename=#{filename}]
+    end
+
+    def set_content_type!(type)
+      controller.headers["Content-Type"] = type
     end
     
     def collection_and_headers(collection)
