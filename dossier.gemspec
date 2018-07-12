@@ -17,15 +17,14 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,db,lib}/**/*"] + %w[MIT-LICENSE Rakefile README.md VERSION]
   s.test_files = Dir["spec/**/*"] - %w[spec/dummy/config/dossier.yml]
 
-  s.add_dependency "arel",            ">= 5.1"
-  s.add_dependency "activesupport",   ">= 5.1"
-  s.add_dependency "actionpack",      ">= 5.1"
-  s.add_dependency "actionmailer",    ">= 5.1"
-  s.add_dependency "railties",        ">= 5.1"
-  s.add_dependency "haml",            ">= 3.1"
+  s.add_dependency "arel",            ">= 3.0"
+  s.add_dependency "activesupport",   ">= 3.2"
+  s.add_dependency "actionpack",      ">= 3.2"
+  s.add_dependency "actionmailer",    ">= 3.2"
+  s.add_dependency "railties",        ">= 3.2"
   s.add_dependency "responders",      ">= 1.1"
 
-  s.add_development_dependency "activerecord",   ">= 5.1"
+  s.add_development_dependency "activerecord",   ">= 3.2"
   s.add_development_dependency "sqlite3",        ">= 1.3.6"
   s.add_development_dependency "pry",            ">= 0.10.1"
   s.add_development_dependency "rspec-rails",    ">= 3.7"

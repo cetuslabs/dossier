@@ -1,0 +1,40 @@
+<h2>
+  <%= report.formatted_title %>
+</h2>
+<%= link_to 'Download CSV', formatted_dossier_report_path('csv', report), class: 'download-csv' %>
+<%= render_options(report) %>
+<table class="dossier report">
+  <thead>
+    <tr>
+      <% report.results.headers.each do |header| %>
+        <th>
+          <%= header %>
+        </th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% report.results.body.each do |row| %>
+      <tr>
+        <% row.each do |value| %>
+          <td>
+            <%= value %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+  <% if report.results.footers.any? %>
+    <tfoot>
+      <% report.results.footers.each do |row| %>
+        <tr>
+          <% row.each do |value| %>
+            <th>
+              <%= value %>
+            </th>
+          <% end %>
+        </tr>
+      <% end %>
+    </tfoot>
+  <% end %>
+</table>
