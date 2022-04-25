@@ -22,7 +22,6 @@ require 'capybara/rspec'
 # Load support files
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
-binding.pry
 DB_CONFIG = [:mysql2, :sqlite3, :postgresql].reduce({}) do |config, adapter_name|
   config.tap do |hash|
     path = "spec/fixtures/db/#{adapter_name}.yml"
