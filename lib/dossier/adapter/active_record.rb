@@ -5,7 +5,7 @@ module Dossier
       attr_accessor :options, :connection
 
       def initialize(options = {})
-        self.options    = options
+                self.options    = options
         self.connection = options.delete(:connection) || active_record_connection
       end
 
@@ -23,7 +23,7 @@ module Dossier
       private
 
       def active_record_connection
-        @abstract_class = Class.new(::ActiveRecord::Base) do
+                @abstract_class = Class.new(::ActiveRecord::Base) do
           self.abstract_class = true
           
           # Needs a unique name for ActiveRecord's connection pool
