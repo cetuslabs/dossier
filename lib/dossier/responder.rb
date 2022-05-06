@@ -17,7 +17,7 @@ module Dossier
     def to_csv
       set_content_disposition!
       set_content_type!('text/csv')
-      controller.response_body = StreamCSV.new(*collection_and_headers(report.raw_results.arrays))
+      controller.response_body = StreamCsv.new(*collection_and_headers(report.raw_results.arrays))
     end
 
     def to_xls
