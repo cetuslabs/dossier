@@ -6,15 +6,15 @@ module Dossier
     delegate :escape, :execute, to: :adapter
 
     def initialize(options)
-            self.options = options.symbolize_keys
+      self.options = options.symbolize_keys
     end
 
     def adapter
-            @adapter ||= dossier_adapter.new(self.options.except(:dossier_adapter))
+      @adapter ||= dossier_adapter.new(self.options.except(:dossier_adapter))
     end
 
     def dossier_adapter
-            adapter_name = options.fetch(:dossier_adapter) { determine_adapter_name }
+      adapter_name = options.fetch(:dossier_adapter) { determine_adapter_name }
       "Dossier::Adapter::#{adapter_name.classify}".constantize
     end
 
