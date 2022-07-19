@@ -15,7 +15,6 @@ Coveralls.wear!('rails')
 
 require File.expand_path("../dummy/config/application.rb",  __FILE__)
 require 'rspec/rails'
-require 'pry'
 require 'generator_spec'
 require 'capybara/rspec'
 

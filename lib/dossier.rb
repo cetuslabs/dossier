@@ -37,5 +37,3 @@ require "dossier/responder"
 require "dossier/result"
 require "dossier/stream_csv"
 require "dossier/xls"
-require 'pry'
-require 'pry-byebug'
