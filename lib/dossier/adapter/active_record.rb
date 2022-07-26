@@ -6,7 +6,7 @@ module Dossier
 
       def initialize(options = {})
         self.options    = options
-        self.connection = options.delete(:connection) || active_record_connection
+        self.connection = ::ActiveRecord::Base.connection || options.delete(:connection) || active_record_connection
       end
 
       def escape(value)
