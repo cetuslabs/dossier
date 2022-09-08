@@ -23,7 +23,7 @@ module Dossier
       private
 
       def active_record_connection
-        return @abstract_class.connection if @abstract_class&.connection.present? && @abstract_class&.connected?
+        return ::ActiveRecord::Base.connection if ::ActiveRecord::Base.connection.present? && ::ActiveRecord::Base.connected?
         @abstract_class = Class.new(::ActiveRecord::Base) do
           self.abstract_class = true
           
