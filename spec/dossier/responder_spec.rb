@@ -39,10 +39,10 @@ describe Dossier::Responder do
 
     it "sets the response body to a new csv streamer instance" do
       responder.to_csv
-      expect(responder.controller.response_body).to be_a(Dossier::StreamCSV)
+      expect(responder.controller.response_body).to be_a(Dossier::StreamCsv)
     end
 
-    it "formats the headers that are passed to Dossier::StreamCSV" do
+    it "formats the headers that are passed to Dossier::StreamCsv" do
       expect(report).to receive(:format_header).with('hi')
       responder.to_csv
     end
