@@ -70,7 +70,7 @@ module Dossier
     def renderer
       @renderer ||= Renderer.new(self)
     end
-    
+
     delegate :render, to: :renderer
 
     private

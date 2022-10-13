@@ -22,17 +22,21 @@ module Dossier
 
       private
 
+      def logger
+        defined?(Rails) ? Rails.logger : Logger.new($stdout)
+      end
+
       def active_record_connection
         return ::ActiveRecord::Base.connection if ::ActiveRecord::Base.connection.present? && ::ActiveRecord::Base.connected?
         @abstract_class = Class.new(::ActiveRecord::Base) do
           self.abstract_class = true
-          
+
           # Needs a unique name for ActiveRecord's connection pool
           def self.name
             "Dossier::Adapter::ActiveRecord::Connection_#{object_id}"
           end
         end
-        @abstract_class.establish_connection(options[:replica])
+        @abstract_class.establish_connection(options)
         @abstract_class.connection
       end
     end

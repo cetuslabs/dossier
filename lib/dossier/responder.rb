@@ -30,7 +30,7 @@ module Dossier
       multi_report_html_only!
       super
     end
-    
+
     private
 
     def set_content_disposition!
@@ -40,7 +40,7 @@ module Dossier
     def set_content_type!(type)
       controller.headers["Content-Type"] = %[#{type}; charset=utf-8]
     end
-    
+
     def collection_and_headers(collection)
       headers = collection.shift.map { |header| report.format_header(header) }
       [collection, headers]
