@@ -10,13 +10,14 @@ module Dossier
     end
 
     def to_json
+      set_content_type!('text/json')
       controller.render json: report.results.hashes
     end
 
     def to_csv
       set_content_disposition!
       set_content_type!('text/csv')
-      controller.response_body = StreamCSV.new(*collection_and_headers(report.raw_results.arrays))
+      controller.response_body = StreamCsv.new(*collection_and_headers(report.raw_results.arrays))
     end
 
     def to_xls

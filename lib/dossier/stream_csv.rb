@@ -1,7 +1,7 @@
 require 'csv'
 
 module Dossier
-  class StreamCSV
+  class StreamCsv
     attr_reader :headers, :collection
 
     def initialize(collection, headers = nil)

@@ -1,0 +1,9 @@
+<div id="<%= report.dom_id %>">
+  <h1 class="dossier-multi-header">
+    <%= report.formatted_title %>
+  </h1>
+  <%= render_options(report) %>
+  <% report.reports.each do |r| %>
+    <%= r.render layout: false %>
+  <% end %>
+</div>

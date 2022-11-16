@@ -7,7 +7,7 @@ module Dossier
     attr_reader :uri
 
     def initialize(url = nil)
-      @uri = URI.parse(url || ENV.fetch('DATABASE_URL'))
+            @uri = URI.parse(url || ENV.fetch('DATABASE_URL'))
     end
 
     def to_hash

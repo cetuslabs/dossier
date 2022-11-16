@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Dossier::StreamCSV do
+describe Dossier::StreamCsv do
   let(:collection) {
     [
       %w[hello there sir how are you],

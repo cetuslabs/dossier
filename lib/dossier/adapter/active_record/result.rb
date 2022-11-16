@@ -6,7 +6,7 @@ module Dossier
         attr_accessor :result
 
         def initialize(activerecord_result)
-          self.result = activerecord_result
+                    self.result = activerecord_result
         end
 
         def headers

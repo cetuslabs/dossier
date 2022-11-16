@@ -12,7 +12,7 @@ module Dossier
       @config_path = Rails.root.join('config', 'dossier.yml')
       setup_client!
     end
-   
+
     def connection_options
       yaml_config.merge(dburl_config || {}).presence || raise_empty_conn_config
     end
@@ -22,7 +22,7 @@ module Dossier
     rescue Errno::ENOENT
       {}
     end
-   
+
     def dburl_config
       Dossier::ConnectionUrl.new(ENV['DOSSIER_DATABASE_URL']).to_hash if ENV.has_key? DB_KEY
     end
