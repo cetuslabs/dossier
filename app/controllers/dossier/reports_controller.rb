@@ -4,7 +4,7 @@ module Dossier
 
     self.responder = Dossier::Responder
 
-    respond_to :html, :json, :csv, :xls
+    respond_to :html, :json, :csv, :xls, :xlsx
 
     def show
       respond_with(report)

@@ -26,6 +26,12 @@ module Dossier
       controller.response_body = Xls.new(*collection_and_headers(report.raw_results.arrays))
     end
 
+    def to_xlsx
+      set_content_disposition!
+      set_content_type!('application/vnd.openxmlformats-officedocument.spreadsheetml.sheet')
+      controller.response_body = Xlsx.new(*collection_and_headers(report.raw_results.arrays))
+    end
+
     def respond
       multi_report_html_only!
       super
