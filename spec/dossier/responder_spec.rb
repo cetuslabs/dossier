@@ -65,5 +65,21 @@ describe Dossier::Responder do
     end
   end
 
+  describe "to_xlsx" do
+    it "sets the content disposition" do
+      expect(responder).to receive(:set_content_disposition!)
+      responder.to_xlsx
+    end
+
+    it "sets the response body to a new xlsx instance" do
+      responder.to_xlsx
+      expect(responder.controller.response_body).to be_a(Dossier::Xlsx)
+    end
+
+    it "formats the headers that are passed to Dossier::Xlsx" do
+      expect(report).to receive(:format_header).with('hi')
+      responder.to_csv
+    end
+  end
 end
 
