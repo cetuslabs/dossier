@@ -1,6 +1,6 @@
 # Dossier
 
-Dossier is a Rails engine that turns SQL into reports. Reports can be easily rendered in various formats, like HTML, CSV, XLS, and JSON.
+Dossier is a Rails engine that turns SQL into reports. Reports can be easily rendered in various formats, like HTML, CSV, XLS, XLSX, and JSON.
 
 - If you **hate** SQL, you can use whatever tool you like to generate it; for example, ActiveRecord's `to_sql`.
 - If you **love** SQL, you can use every feature your database supports.
@@ -26,6 +26,7 @@ Dossier currently supports outputting to the following formats:
 - HTML
 - CSV
 - XLS
+- XLSX
 - JSON
 
 Any of these formats can be requested by using the appropriate format extension on the end of the report's URL.
@@ -123,7 +124,7 @@ class LeastProfitableAccountsReport < Dossier::Report
 end
 ```
 
-The built-in `ReportsController` uses this formatting when rendering the HTML and JSON representations, but not when rendering the CSV or XLS.
+The built-in `ReportsController` uses this formatting when rendering the HTML and JSON representations, but not when rendering the CSV, XLS or XLSX.
 
 If your formatting method takes a second argment, it will be given a hash of the values in the row.
 

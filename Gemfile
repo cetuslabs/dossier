@@ -14,6 +14,7 @@ gem "jquery-rails"
 gem "mysql2"
 gem "pg"
 gem 'coveralls', require: false
+gem 'fast_excel'
 
 
 # test unit removed from stdlib in ruby 2.2.0
