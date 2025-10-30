@@ -123,5 +123,11 @@ describe Dossier::Report do
 
       expect(TestReport.filename).to match(/^test-report_.*-GMT$/)
     end
+
+    it "fallback to UTC when zone is not set" do
+      Time.zone = nil
+
+      expect(subject).to match(/^test-report_.*-UTC$/)
+    end
   end
 end
