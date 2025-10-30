@@ -102,4 +102,26 @@ describe Dossier::Report do
       report.render
     end
   end
+
+  describe ".filename" do
+    subject { TestReport.filename }
+
+    before { Time.zone = "Eastern Time (US & Canada)" }
+
+    it "includes the parameterized report name" do
+      expect(subject).to start_with("test-report_")
+    end
+
+    it "includes the time zone abbreviation" do
+      expect(subject).to match(/^test-report_.*-EDT$/)
+    end
+
+    it "reflects the Rails time zone setting" do
+      expect(subject).to match(/^test-report_.*-EDT$/)
+
+      Time.zone = "Europe/London"
+
+      expect(TestReport.filename).to match(/^test-report_.*-GMT$/)
+    end
+  end
 end
