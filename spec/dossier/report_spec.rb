@@ -102,4 +102,34 @@ describe Dossier::Report do
       report.render
     end
   end
+
+  describe ".filename" do
+    subject { TestReport.filename }
+    let(:tz_abbr) { Time.zone.now.strftime("%Z") }
+
+    before { Time.zone = "Eastern Time (US & Canada)" }
+
+    it "includes the parameterized report name" do
+      expect(subject).to start_with("test-report_")
+    end
+
+    it "includes the time zone abbreviation" do
+      expect(subject).to match(/^test-report_.*-#{tz_abbr}$/)
+    end
+
+    it "reflects the Rails time zone setting" do
+      expect(subject).to match(/^test-report_.*-#{tz_abbr}$/)
+
+      Time.zone = "Europe/London"
+
+      tz_abbr = Time.zone.now.strftime("%Z")
+      expect(TestReport.filename).to match(/^test-report_.*-#{tz_abbr}$/)
+    end
+
+    it "fallback to UTC when zone is not set" do
+      Time.zone = nil
+
+      expect(subject).to match(/^test-report_.*-UTC$/)
+    end
+  end
 end
